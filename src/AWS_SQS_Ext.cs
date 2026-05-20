@@ -3,15 +3,19 @@ using System.Reflection;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Linq;
+using System.Threading;
 using psn.PH.Structures;
 using Amazon;
 using Amazon.SQS;
 using Amazon.SQS.Model;
 
+
 namespace psn.PH
 {
     public class AWS_SQS_Ext : IAWS_SQS_Ext
     {
+        //private readonly ILogger _logger;
+
         static readonly DateTime epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
         private long getCurrentTimeInMillis()
         {
@@ -103,7 +107,7 @@ namespace psn.PH
             return response.Result;
         }
 
-        private async Task<bool> Delete_Message(AmazonSQSClient client, string QueueName, string ReceiptHandle)
+        private async Task<bool> Delete_Message(AmazonSQSClient client, string QueueName, string ReceiptHandle, int TimeoutInSeconds)
         {
             var response = Get_QueueUrl(client, QueueName);
             string queueUrl = response.Result;
@@ -113,13 +117,35 @@ namespace psn.PH
                 ReceiptHandle = ReceiptHandle,
             };
 
-            var delresponse = await client.DeleteMessageAsync(deleteMessageRequest);
-            return delresponse.HttpStatusCode == System.Net.HttpStatusCode.OK;
+            CancellationTokenSource? cts = null;
+            CancellationToken token = CancellationToken.None;
+            if (TimeoutInSeconds > 0)
+            {
+                // clamp an extremely large value to a reasonable positive timeout if needed (no clamp required here)
+                cts = new CancellationTokenSource(TimeSpan.FromSeconds(TimeoutInSeconds));
+                token = cts.Token;
+            }
+
+            try
+            {
+                var delresponse = await client.DeleteMessageAsync(deleteMessageRequest, token);
+                return delresponse.HttpStatusCode == System.Net.HttpStatusCode.OK;
+            }
+            catch (OperationCanceledException ex)
+            {
+                // operation timed out or was canceled
+               // _logger.LogInformation($"Error upon deleting message on SQS: {ex.Message}");
+                return false;
+            }
+            finally
+            {
+                cts?.Dispose();
+            }
         }
-        public bool Delete_Message_Ext(AWS_Authenticationinfo authInfo, string QueueName, string ReceiptHandle)
+        public bool Delete_Message_Ext(AWS_Authenticationinfo authInfo, string QueueName, string ReceiptHandle, int TimeoutInSeconds)
         {
             AmazonSQSClient client = getClient(authInfo);
-            var response = Delete_Message(client, QueueName, ReceiptHandle);
+            var response = Delete_Message(client, QueueName, ReceiptHandle, TimeoutInSeconds);
             return response.Result;
         }
 

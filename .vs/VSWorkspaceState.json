@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\src",
+    "\\test"
   ],
+  "SelectedNode": "\\src\\IAWS_SQS_Ext.cs",
   "PreviewInSolutionExplorer": false
 }

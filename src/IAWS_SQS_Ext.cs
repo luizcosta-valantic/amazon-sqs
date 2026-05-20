@@ -6,7 +6,7 @@ namespace psn.PH
     /// <summary>
     /// Connect with AWS SQS to send, store, and receive messages between software components.
     /// </summary>
-    [OSInterface(Description = "Connect with AWS SQS to send, store, and receive messages between software components.", Name = "AWS_SQS_ExternalLogic", IconResourceName = "psn.PH.AWS_SQS_ExtIcon.png")]
+    [OSInterface(Description = "Connect with AWS SQS to send, store, and receive messages between software components.", Name = "AWS_SQS_ExternalLogic_UR", IconResourceName = "psn.PH.AWS_SQS_ExtIcon.png")]
     public interface IAWS_SQS_Ext
     {
         [OSAction(Description = "Creates a new standard or FIFO queue.", ReturnName = "QueueURL")]
@@ -18,7 +18,7 @@ namespace psn.PH
         [OSAction(Description = "Get a Queue URL by name.", ReturnName = "QueueURL")]
         public string Get_QueueUrl_Ext(AWS_Authenticationinfo authInfo, string QueueName);
         [OSAction(Description = "Deletes the specified message from the specified queue. You specify the message by using the message's receipt handle and not the MessageId you receive when you send the message.", ReturnName = "IsSuccessful")]
-        public bool Delete_Message_Ext(AWS_Authenticationinfo authInfo, string QueueName, string ReceiptHandle);
+        public bool Delete_Message_Ext(AWS_Authenticationinfo authInfo, string QueueName, string ReceiptHandle, int TimeoutInSeconds);
         [OSAction(Description = "Delivers a message to the specified queue.", ReturnName = "MessageId")]
         public string Send_Message_Ext(AWS_Authenticationinfo authInfo, string QueueUrl, string MessageBody, string MessageDeduplicationId, string MessageGroupId, List<SQS_MessageAttribute> MessageAttributes);
         [OSAction(Description = "Retrieves one or more messages (up to 10), from the specified queue.", ReturnName = "Messages")]

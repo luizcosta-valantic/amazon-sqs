@@ -3,16 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\luizf\\source\\repos\\luizcosta-valantic\\amazon-sqs\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\luizf\\source\\repos\\luizcosta-valantic\\amazon-sqs\\src\\IAWS_SQS_Ext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\IAWS_SQS_Ext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\luizf\\source\\repos\\luizcosta-valantic\\amazon-sqs\\src\\aws-sqs_ext.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\aws-sqs_ext.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\luizf\\source\\repos\\luizcosta-valantic\\amazon-sqs\\src\\AWS_SQS_Ext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\AWS_SQS_Ext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\luizf\\source\\repos\\luizcosta-valantic\\amazon-sqs\\src\\IAWS_SQS_Ext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\IAWS_SQS_Ext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Bookmark",
@@ -58,39 +54,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "aws-sqs_ext.csproj",
-              "DocumentMoniker": "C:\\Users\\luizf\\source\\repos\\luizcosta-valantic\\amazon-sqs\\src\\aws-sqs_ext.csproj",
-              "RelativeDocumentMoniker": "src\\aws-sqs_ext.csproj",
-              "ToolTip": "C:\\Users\\luizf\\source\\repos\\luizcosta-valantic\\amazon-sqs\\src\\aws-sqs_ext.csproj",
-              "RelativeToolTip": "src\\aws-sqs_ext.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-05-20T17:48:21.746Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "AWS_SQS_Ext.cs",
               "DocumentMoniker": "C:\\Users\\luizf\\source\\repos\\luizcosta-valantic\\amazon-sqs\\src\\AWS_SQS_Ext.cs",
               "RelativeDocumentMoniker": "src\\AWS_SQS_Ext.cs",
               "ToolTip": "C:\\Users\\luizf\\source\\repos\\luizcosta-valantic\\amazon-sqs\\src\\AWS_SQS_Ext.cs",
               "RelativeToolTip": "src\\AWS_SQS_Ext.cs",
-              "ViewState": "AgIAAF4AAAAAAAAAAAAkwG0AAACEAAAAAAAAAA==",
+              "ViewState": "AgIAAHUAAAAAAAAAAAAAAIkAAABYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-20T17:18:04.069Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "IAWS_SQS_Ext.cs",
               "DocumentMoniker": "C:\\Users\\luizf\\source\\repos\\luizcosta-valantic\\amazon-sqs\\src\\IAWS_SQS_Ext.cs",
               "RelativeDocumentMoniker": "src\\IAWS_SQS_Ext.cs",
               "ToolTip": "C:\\Users\\luizf\\source\\repos\\luizcosta-valantic\\amazon-sqs\\src\\IAWS_SQS_Ext.cs",
               "RelativeToolTip": "src\\IAWS_SQS_Ext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAmAAAAAAAAAA==",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAkwBQAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-20T17:17:47.284Z",
               "EditorCaption": ""

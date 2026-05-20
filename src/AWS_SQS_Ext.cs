@@ -2,6 +2,7 @@ using System.Globalization;
 using System.Reflection;
 using System.Text.Json;
 using System.Text.RegularExpressions;
+using System.Linq;
 using psn.PH.Structures;
 using Amazon;
 using Amazon.SQS;
@@ -166,14 +167,26 @@ namespace psn.PH
             var response = Send_Message(client, QueueUrl, MessageBody, MessageDeduplicationId, MessageGroupId, MessageAttributes);
             return response.Result;
         }
-        private async Task<List<SQS_Message>> Receive_Message(AmazonSQSClient client, string QueueUrl, int MaxNumberOfMessages, List<SQS_MessageAttribute> MessageAttributeNames)
+        private async Task<List<SQS_Message>> Receive_Message(AmazonSQSClient client, string QueueUrl, int MaxNumberOfMessages, List<SQS_MessageAttribute> MessageAttributeNames, int WaitTimeSeconds)
         {
             var receiveMessageRequest = new ReceiveMessageRequest
             {
                 QueueUrl = QueueUrl,
                 MaxNumberOfMessages = MaxNumberOfMessages,
-
             };
+
+            // Map provided SQS_MessageAttribute names into the AWS SDK request (if any)
+            if (MessageAttributeNames != null && MessageAttributeNames.Count > 0)
+            {
+                receiveMessageRequest.MessageAttributeNames = MessageAttributeNames.Select(ma => ma.Name).ToList();
+            }
+
+            // If WaitTimeSeconds provided, clamp to SQS max (20) and set
+            if (WaitTimeSeconds > 0)
+            {
+                receiveMessageRequest.WaitTimeSeconds = Math.Min(WaitTimeSeconds, 20);
+            }
+
             var receiveMessageResponse = await client.ReceiveMessageAsync(receiveMessageRequest);
             if (receiveMessageResponse.HttpStatusCode == System.Net.HttpStatusCode.OK)
             {
@@ -212,10 +225,10 @@ namespace psn.PH
                 return new List<SQS_Message>();
             }
         }
-        public List<SQS_Message> Receive_Message_Ext(AWS_Authenticationinfo authInfo, string QueueUrl, int MaxNumberOfMessages, List<SQS_MessageAttribute> MessageAttributeNames)
+        public List<SQS_Message> Receive_Message_Ext(AWS_Authenticationinfo authInfo, string QueueUrl, int MaxNumberOfMessages, List<SQS_MessageAttribute> MessageAttributeNames, int WaitTimeSeconds)
         {
             AmazonSQSClient client = getClient(authInfo);
-            var response = Receive_Message(client, QueueUrl, MaxNumberOfMessages, MessageAttributeNames);
+            var response = Receive_Message(client, QueueUrl, MaxNumberOfMessages, MessageAttributeNames, WaitTimeSeconds);
             return response.Result;
         }
 

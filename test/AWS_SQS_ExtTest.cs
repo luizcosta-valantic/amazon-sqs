@@ -57,7 +57,7 @@ public class AWS_SQS_ExtTests
         List<SQS_MessageAttribute> msgAttr = new List<SQS_MessageAttribute>();
         string messageId = client.Send_Message_Ext(authInfo, queueURL, "Hello World!", getCurrentTimeInMillis().ToString(), getCurrentTimeInMillis().ToString(), msgAttr);
 
-        List<SQS_Message> msgs = client.Receive_Message_Ext(authInfo, queueURL, 10, new List<SQS_MessageAttribute>());
+        List<SQS_Message> msgs = client.Receive_Message_Ext(authInfo, queueURL, 10, new List<SQS_MessageAttribute>(), 0);
         Assert.True(msgs.Count > 0);
 
         foreach (var msg in msgs)
@@ -80,7 +80,7 @@ public class AWS_SQS_ExtTests
         List<SQS_MessageAttribute> msgAttr = new List<SQS_MessageAttribute>();
         string messageId = client.Send_Message_Ext(authInfo, queueURL, "Hello World!", string.Empty, string.Empty, msgAttr);
 
-        List<SQS_Message> msgs = client.Receive_Message_Ext(authInfo, queueURL, 10, new List<SQS_MessageAttribute>());
+        List<SQS_Message> msgs = client.Receive_Message_Ext(authInfo, queueURL, 10, new List<SQS_MessageAttribute>(), 0);
         Assert.True(messageId.Length > 0);
         // note that for standard queue, it is fire and forget. we should not expect the message to appear immediately in the queue but we should have a message ID as a response
         output.WriteLine("Send_Message_Ext_text2 MessageID =" + messageId);

@@ -22,7 +22,7 @@ namespace psn.PH
         [OSAction(Description = "Delivers a message to the specified queue.", ReturnName = "MessageId")]
         public string Send_Message_Ext(AWS_Authenticationinfo authInfo, string QueueUrl, string MessageBody, string MessageDeduplicationId, string MessageGroupId, List<SQS_MessageAttribute> MessageAttributes);
         [OSAction(Description = "Retrieves one or more messages (up to 10), from the specified queue.", ReturnName = "Messages")]
-        public List<SQS_Message> Receive_Message_Ext(AWS_Authenticationinfo authInfo, string QueueUrl, int MaxNumberOfMessages, List<SQS_MessageAttribute> MessageAttributeNames);
+        public List<SQS_Message> Receive_Message_Ext(AWS_Authenticationinfo authInfo, string QueueUrl, int MaxNumberOfMessages, List<SQS_MessageAttribute> MessageAttributeNames, int WaitTimeSeconds);
         [OSAction(Description = "Deletes the messages in a queue specified by the QueueURL parameter.", ReturnName = "IsSuccessful")]
         public bool Purge_Queue_Ext(AWS_Authenticationinfo authInfo, string QueueUrl);
 
